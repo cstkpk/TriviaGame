@@ -1,7 +1,10 @@
-// Function to hide start button
-$("#start").click(function(){
-    $("#start").hide();
-})
+$(document).ready(function() {
+    $("#timer").hide();
+    $("#question").hide();
+    $("#answer1").hide();
+    $("#answer2").hide();
+    $("#answer3").hide();
+    $("#answer4").hide();
 
 // Array of questions and answers
 var questions = {
@@ -25,5 +28,17 @@ function countdown() {
     }
 }
 // Here is the function for what will happen when the timer runs out
-function doSomething();
+// function showCorrectAnswer();
 // This is where I can have it show the answer if time runs out
+
+
+// Function to hide start button
+$("#start").click(function(){
+    $("#start").hide();
+    $("#timer").show();
+})
+
+
+
+
+})
