@@ -25,8 +25,8 @@ var questionArr = [
 
 var counter = 0;
 // var userGuess = $("#answer4:text").click();
-var userGuess = "Red";
-console.log("User guess: " + userGuess);
+var userGuess = $(".answer-choice").val();
+console.log("Correct answer: " + questionArr[counter].answerCorrect);
 
 
 // Here is the function to start the timer
@@ -67,7 +67,7 @@ function congrats() {
     $("#answer3").hide();
     $("#answer4").hide();
     $("#yay").show();
-    // $("#yay").text("Congratulations!")
+    $("#yay").text("Congratulations!")
 }
 
 
@@ -90,12 +90,12 @@ $("#start").click(function(){
 
 });
 
-if (userGuess === questionArr[counter].answerCorrect) {
+if (userGuess == questionArr[counter].answerCorrect) {
     // setTimeout(congrats, 3000);
     congrats();
 }
 else if (userGuess !== questionArr[counter].answerCorrect) {
-    setTimeout(answerPage, 3000);
+    // setTimeout(answerPage, 3000);
 }
 
  
