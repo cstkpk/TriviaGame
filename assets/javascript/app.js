@@ -142,28 +142,35 @@ compareAnswers();
     // $("#question").text(questionsArr[counter].question);
 //     counter++;
 // }
+
 function newQuestion() {
-    // if (counter <= questionArr.length) {
-        counter++;
-        console.log("New question: " + questionArr[counter].question);
-        $("#question").show();
-        $("#question").text(questionArr[counter].question);
-        $(".hidebutton").show();
-        // $("#answer1").show();
-        $("#answer1").text(questionArr[counter].answersAll[0]);
-        // $("#answer2").show();
-        $("#answer2").text(questionArr[counter].answersAll[1]);
-        // $("#answer3").show();
-        $("#answer3").text(questionArr[counter].answersAll[2]);
-        // $("#answer4").show();
-        $("#answer4").text(questionArr[counter].answersAll[3]);
-        $("#yay").hide();
-        timeLeft = 10;
-        startTimer();
-    // }
-    // else {
-    //     $("#yay").hide();
-    // }
+
+// if (counter <= questionArr.length) {
+if (counter <= 1) {
+
+// function newQuestion() {
+    counter++;
+    console.log("New question: " + questionArr[counter].question);
+    $("#question").show();
+    $("#question").text(questionArr[counter].question);
+    $(".hidebutton").show();
+    // $("#answer1").show();
+    $("#answer1").text(questionArr[counter].answersAll[0]);
+    // $("#answer2").show();
+    $("#answer2").text(questionArr[counter].answersAll[1]);
+    // $("#answer3").show();
+    $("#answer3").text(questionArr[counter].answersAll[2]);
+    // $("#answer4").show();
+    $("#answer4").text(questionArr[counter].answersAll[3]);
+    $("#yay").hide();
+    timeLeft = 10;
+    startTimer();
+// }
+}
+else {
+    $("#yay").hide();
+    $("#timer").hide();
+}
 }
 
 
