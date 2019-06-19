@@ -2,10 +2,11 @@
 $(document).ready(function() {
     $("#timer").hide();
     $("#question").hide();
-    $("#answer1").hide();
-    $("#answer2").hide();
-    $("#answer3").hide();
-    $("#answer4").hide();
+    $(".hidebutton").hide();
+    // $("#answer1").hide();
+    // $("#answer2").hide();
+    // $("#answer3").hide();
+    // $("#answer4").hide();
     $("#yay").hide();
     // $(".answer-choice").click(answerPage);
 
@@ -76,10 +77,11 @@ var startTimer = function() {
 function answerPage() {
     // $("#timer").hide();
     $("#question").hide();
-    $("#answer1").hide();
-    $("#answer2").hide();
-    $("#answer3").hide();
-    $("#answer4").hide();
+    $(".hidebutton").hide();
+    // $("#answer1").hide();
+    // $("#answer2").hide();
+    // $("#answer3").hide();
+    // $("#answer4").hide();
     $("#yay").show();
     $("#yay").text("Tough luck!");
     clearTimeout(timerId);
@@ -105,6 +107,7 @@ $("#start").click(function(){
     startTimer();
     $("#question").show();
     $("#question").text(questionArr[counter].question);
+    $(".hidebutton").show();
     $("#answer1").show();
     $("#answer1").text(questionArr[counter].answersAll[0]);
     $("#answer2").show();
@@ -145,13 +148,14 @@ function newQuestion() {
         console.log("New question: " + questionArr[counter].question);
         $("#question").show();
         $("#question").text(questionArr[counter].question);
-        $("#answer1").show();
+        $(".hidebutton").show();
+        // $("#answer1").show();
         $("#answer1").text(questionArr[counter].answersAll[0]);
-        $("#answer2").show();
+        // $("#answer2").show();
         $("#answer2").text(questionArr[counter].answersAll[1]);
-        $("#answer3").show();
+        // $("#answer3").show();
         $("#answer3").text(questionArr[counter].answersAll[2]);
-        $("#answer4").show();
+        // $("#answer4").show();
         $("#answer4").text(questionArr[counter].answersAll[3]);
         $("#yay").hide();
         timeLeft = 10;
