@@ -28,6 +28,14 @@ var questionArr = [
     }
 ]
 
+// Variables for stats
+var wins = 0;
+var losses = 0;
+var unanswered = 0;
+
+
+
+
 var counter = 0;
 console.log("Correct answer: " + questionArr[counter].answerCorrect);
 
@@ -53,6 +61,7 @@ var startTimer = function() {
             clearTimeout(timerId);
             // doSomething();
             answerPage();
+            unanswered++;
         } else {
             elem.innerHTML = "Time remaining: " + timeLeft + " seconds";
             timeLeft--;
@@ -83,10 +92,7 @@ function congrats() {
     clearTimeout(timerId);
     setTimeout(newQuestion, 3000);
     $("#question").hide();
-    $("#answer1").hide();
-    $("#answer2").hide();
-    $("#answer3").hide();
-    $("#answer4").hide();
+    $(".hidebutton").hide();
     $("#yay").show();
     $("#yay").text("Congratulations!");
 }
@@ -134,21 +140,26 @@ compareAnswers();
 //     counter++;
 // }
 function newQuestion() {
-    counter++;
-    console.log("New question: " + questionArr[counter].question);
-    $("#question").show();
-    $("#question").text(questionArr[counter].question);
-    $("#answer1").show();
-    $("#answer1").text(questionArr[counter].answersAll[0]);
-    $("#answer2").show();
-    $("#answer2").text(questionArr[counter].answersAll[1]);
-    $("#answer3").show();
-    $("#answer3").text(questionArr[counter].answersAll[2]);
-    $("#answer4").show();
-    $("#answer4").text(questionArr[counter].answersAll[3]);
-    $("#yay").hide();
-    timeLeft = 10;
-    startTimer();
+    // if (counter <= questionArr.length) {
+        counter++;
+        console.log("New question: " + questionArr[counter].question);
+        $("#question").show();
+        $("#question").text(questionArr[counter].question);
+        $("#answer1").show();
+        $("#answer1").text(questionArr[counter].answersAll[0]);
+        $("#answer2").show();
+        $("#answer2").text(questionArr[counter].answersAll[1]);
+        $("#answer3").show();
+        $("#answer3").text(questionArr[counter].answersAll[2]);
+        $("#answer4").show();
+        $("#answer4").text(questionArr[counter].answersAll[3]);
+        $("#yay").hide();
+        timeLeft = 10;
+        startTimer();
+    // }
+    // else {
+    //     $("#yay").hide();
+    // }
 }
 
 
