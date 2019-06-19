@@ -13,55 +13,41 @@ $(document).ready(function() {
 var questionArr = [
     question1 = {
         question: "What is the first color in the rainbow?",
-        answersWrong: ["Orange", "Yellow", "Green"],
+        answersAll: ["Orange", "Yellow", "Green", "Red"],
         answerCorrect: "Red"
     },
     quesiton2 = { 
         question: "Which is the largest number?",
-        answersWrong: ["11", "4", "23"],
+        answersAll: ["11", "4", "32", "23"],
         answerCorrect: "32"
+    },
+    question3 = {
+        question: "Which is the best type of pie?",
+        answersAll: ["Apple", "Cherry", "Blueberry", "Pecan"],
+        answerCorrect: "Blueberry"
     }
 ]
 
 var counter = 0;
-// var userGuess = $("#answer4:text").click();
-// console.log("User guess: " + userGuess);
-// var userGuess = $(".answer-choice").click([3].textContent);
 console.log("Correct answer: " + questionArr[counter].answerCorrect);
-// console.log("User guess: " + $(".answer-choice").click([3].textContent));
-// console.log("User guess: " + $(".answer-choice").innerHTML);
-// console.log("User guess: " + JSON.stringify($(".answer-choice").click([3].textContent), null, 2));
 
-function compareAnswers() {
-$(".answer-choice").on("click", function(event){
-    console.log(event);
-    console.log("Event: " + event.target.textContent);
-    console.log("Event Type: " + typeof(event.target.textContent));
-    // Testing to see if we have a correct answer
-    if (event.target.textContent == questionArr[counter].answerCorrect) {
-        console.log("MATCH");
-        setInterval(congrats, 3000);
-        congrats();
-    }
-    else if (userGuess !== questionArr[counter].answerCorrect) {
-        // setTimeout(answerPage, 3000);
-    }
-})
-}
-compareAnswers();
+
 
 // var userGuess = $(".answer-choice").on("click", function(event) {
 //     event.target.textContent;
 // })
 
+var timerId;
+var timeLeft;
 
 // Here is the function to start the timer
-function startTimer() {
+var startTimer = function() {
     // Here are the variables for the timer
-    var timeLeft = 10;
+    timeLeft = 10;
+    timerId = setInterval(countdown, 1000);
     var elem = document.getElementById("timer");
-    var timerId = setInterval(countdown, 1000);
     // Here is the function for the timer
+    elem.innerHTML = "Time remaining: " + timeLeft + " seconds";
     function countdown() {
         if (timeLeft == -1) {
             clearTimeout(timerId);
@@ -70,13 +56,16 @@ function startTimer() {
         } else {
             elem.innerHTML = "Time remaining: " + timeLeft + " seconds";
             timeLeft--;
+            console.log("Hello time");
         };
-    }
+    } 
 }
+
+
 
 // Function to clear the page and show the correct answer
 function answerPage() {
-    $("#timer").hide();
+    // $("#timer").hide();
     $("#question").hide();
     $("#answer1").hide();
     $("#answer2").hide();
@@ -84,12 +73,15 @@ function answerPage() {
     $("#answer4").hide();
     $("#yay").show();
     $("#yay").text("Tough luck!");
+    clearTimeout(timerId);
     setTimeout(newQuestion, 3000);
 }
 
 // Function to clear the page and say congratulations
 function congrats() {
-    $("#timer").hide();
+    // $("#timer").hide();
+    clearTimeout(timerId);
+    setTimeout(newQuestion, 3000);
     $("#question").hide();
     $("#answer1").hide();
     $("#answer2").hide();
@@ -103,35 +95,38 @@ function congrats() {
 // Function to hide start button and show the timer and first question with answers
 $("#start").click(function(){
     $("#start").hide();
-    startTimer();
     $("#timer").show();
+    startTimer();
     $("#question").show();
     $("#question").text(questionArr[counter].question);
     $("#answer1").show();
-    $("#answer1").text(questionArr[counter].answersWrong[0]);
+    $("#answer1").text(questionArr[counter].answersAll[0]);
     $("#answer2").show();
-    $("#answer2").text(questionArr[counter].answersWrong[1]);
+    $("#answer2").text(questionArr[counter].answersAll[1]);
     $("#answer3").show();
-    $("#answer3").text(questionArr[counter].answersWrong[2]);
+    $("#answer3").text(questionArr[counter].answersAll[2]);
     $("#answer4").show();
-    $("#answer4").text(questionArr[counter].answerCorrect);
-    // counter++;
-
+    $("#answer4").text(questionArr[counter].answersAll[3]);
 });
 
 
 
-
-// Testing to see if we have a correct answer
-// if (event.target.textContent == questionArr[counter].answerCorrect) {
-//     console.log("MATCH");
-//     setInterval(congrats, 3000);
-//     congrats();
-// }
-// else if (userGuess !== questionArr[counter].answerCorrect) {
-//     // setTimeout(answerPage, 3000);
-// }
-
+function compareAnswers() {
+    $(".answer-choice").on("click", function(event){
+        console.log(event);
+        console.log("Event: " + event.target.textContent);
+        console.log("Event Type: " + typeof(event.target.textContent));
+        // Testing to see if we have a correct answer
+        if (event.target.textContent == questionArr[counter].answerCorrect) {
+            console.log("MATCH");
+            congrats();
+        }
+        else if (event.target.textContent !== questionArr[counter].answerCorrect) {
+            answerPage();
+        }
+    })
+}
+compareAnswers();
  
 
 // Function to display each question
@@ -140,7 +135,20 @@ $("#start").click(function(){
 // }
 function newQuestion() {
     counter++;
-    $("#question").text(questionsArr[counter].question);
+    console.log("New question: " + questionArr[counter].question);
+    $("#question").show();
+    $("#question").text(questionArr[counter].question);
+    $("#answer1").show();
+    $("#answer1").text(questionArr[counter].answersAll[0]);
+    $("#answer2").show();
+    $("#answer2").text(questionArr[counter].answersAll[1]);
+    $("#answer3").show();
+    $("#answer3").text(questionArr[counter].answersAll[2]);
+    $("#answer4").show();
+    $("#answer4").text(questionArr[counter].answersAll[3]);
+    $("#yay").hide();
+    timeLeft = 10;
+    startTimer();
 }
 
 
