@@ -100,6 +100,9 @@ function updateUnanswered() {
 }
 
 function showStats() {
+    $("#wins").show();
+    $("#losses").show();
+    $("#unanswered").show();
     updateWins();
     updateLosses();
     updateUnanswered();
@@ -178,6 +181,13 @@ function outOfTime() {
 // Function to hide start button and show the timer and first question with answers
 $("#start").click(function(){
     $("#start").hide();
+    $("#game-over").hide();
+    $("#wins").hide();
+    $("#losses").hide();
+    $("#unanswered").hide();
+    wins = 0;
+    losses = 0;
+    vunanswered = 0;
     $("#image-holder").hide();
     $("#timer").show();
     startTimer();
@@ -219,7 +229,7 @@ compareAnswers();
 
 function newQuestion() {
 
-if (counter < questionArr.length - 1) {
+if (counter < questionArr.length - 10) {
 
     counter++;
     console.log("New question: " + questionArr[counter].question);
@@ -239,8 +249,15 @@ else {
     $("#yay").hide();
     $("#timer").hide();
     showStats();
-    $("#game-over").text("GAME OVER");
+    $("#game-over").show();
+    $("#game-over").text("All done! Here's how you did:");
     $("#image-holder").html("<img src=assets/images/end2.gif width='400px'>")
+    // setTimeout(newQuestion, 8000);
+    $("#start").show();
+    $("#start").text("START OVER");
+    counter = 0;
+    winImageCount = 0;
+    loseImageCount = 0;
 }};
 
 // Calling functions to start the game

@@ -1,10 +1,15 @@
 body {
-    background-color: rgb(250, 250, 142);
+    /* background-color: rgb(250, 250, 142); */
+    background-image: url("grass.jpg");
+    /* background-size: cover; */
     font-family: 'Roboto', sans-serif;
+    color: #333;
 }
 
 .container {
-    background-color: white;
+    /* background-color: rgb(229, 247, 229, 0.9); */
+    background-color: rgb(255, 255, 255, 1);
+    border: 5px outset #999;
 }
 
 h1 {
@@ -18,10 +23,20 @@ h1 {
     font-weight: bold;
 }
 
-
+#image-holder {
+    margin-bottom: 20px;
+}
 
 
 #game-over {
     font-size: 30px;
     font-weight: bold;
+}
+
+/* .stats {
+    margin-top: 10px;
+} */
+
+.push {
+    padding: 10px 0px;
 }
