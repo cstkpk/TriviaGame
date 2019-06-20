@@ -4,7 +4,7 @@ $(document).ready(function() {
     $("#question").hide();
     $(".hidebutton").hide();
     $("#yay").hide();
-    $("#image-holder").html("<img src=assets/images/celebration2.gif width='400px'>")
+    $("#image-holder").html("<img src=assets/images/start3.gif width='400px'>")
 
 // Array of questions and answers 
 var questionArr = [
@@ -61,11 +61,11 @@ var questionArr = [
 ]
 
 // Array for winning images
-var winImage = ["assets/images/celebration1.gif", "assets/images/celebration2.gif"];
+var winImage = ["assets/images/celebration1.gif", "assets/images/celebration2.gif", "assets/images/celebration3.gif", "assets/images/celebration4.gif", "assets/images/celebration5.gif", "assets/images/celebration6.gif", "assets/images/celebration7.gif", "assets/images/celebration8.gif", "assets/images/celebration9.gif", "assets/images/celebration10.gif"];
 winImageCount = 0;
 
 // Array for losing images
-var loseImage = ["assets/images/loss1.gif"];
+var loseImage = ["assets/images/loss1.gif", "assets/images/loss2.gif", "assets/images/loss3.gif", "assets/images/loss4.gif", "assets/images/loss5.gif", "assets/images/loss6.gif", "assets/images/loss7.gif", "assets/images/loss8.gif", "assets/images/loss9.gif", "assets/images/loss10.gif"];
 loseImageCount = 0;
 
 // This function will display an image if the user wins the round
@@ -125,7 +125,8 @@ var startTimer = function() {
     function countdown() {
         if (timeLeft == -1) {
             clearTimeout(timerId);
-            answerPage();
+            // answerPage();
+            outOfTime();
             unanswered++;
         } else {
             elem.innerHTML = "Time remaining: " + timeLeft + " seconds";
@@ -142,9 +143,10 @@ function answerPage() {
     $("#question").hide();
     $(".hidebutton").hide();
     $("#yay").show();
-    $("#yay").text("Tough luck!");
+    $("#yay").text("We can't all be winners.");
     clearTimeout(timerId);
     setTimeout(newQuestion, 3000);
+    $("#image-holder").show();
     displayLoseImage();
 }
 
@@ -156,9 +158,20 @@ function congrats() {
     $("#question").hide();
     $(".hidebutton").hide();
     $("#yay").show();
-    $("#yay").text("Congratulations!");
+    $("#yay").text("Looks like we're all winners here!");
     $("#image-holder").show();
     displayWinImage();
+}
+
+function outOfTime() {
+    $("#question").hide();
+    $(".hidebutton").hide();
+    $("#yay").show();
+    $("#yay").text("Out of time!");
+    clearTimeout(timerId);
+    setTimeout(newQuestion, 3000);
+    $("#image-holder").show();
+    displayLoseImage();
 }
 
 
@@ -227,6 +240,7 @@ else {
     $("#timer").hide();
     showStats();
     $("#game-over").text("GAME OVER");
+    $("#image-holder").html("<img src=assets/images/end2.gif width='400px'>")
 }};
 
 // Calling functions to start the game
