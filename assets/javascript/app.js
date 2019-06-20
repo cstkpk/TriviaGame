@@ -120,7 +120,7 @@ var timeLeft;
 // Here is the function to start the timer
 var startTimer = function() {
     // Here are the variables for the timer
-    timeLeft = 5;
+    timeLeft = 30;
     timerId = setInterval(countdown, 1000);
     // Here is the function for the timer
     $("#timer").text("Time remaining: " + timeLeft + " seconds");
@@ -154,7 +154,7 @@ function answerPage() {
 function congrats() {
     // $("#timer").hide();
     clearTimeout(timerId);
-    setTimeout(newQuestion, 3000);
+    setTimeout(newQuestion, 5000);
     $("#question").hide();
     $(".hidebutton").hide();
     $("#yay").show();
@@ -170,7 +170,7 @@ function outOfTime() {
     $("#yay").show();
     $("#yay").text("Out of time!");
     clearTimeout(timerId);
-    setTimeout(newQuestion, 3000);
+    setTimeout(newQuestion, 5000);
     $("#image-holder").show();
     displayLoseImage();
     $("#reveal").show();
