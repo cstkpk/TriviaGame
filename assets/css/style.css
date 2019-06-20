@@ -18,6 +18,10 @@ h1 {
     padding-top: 10px;
 }
 
+.answer-choice:hover {
+    color: green;
+}
+
 #yay {
     font-size: 26px;
     font-weight: bold;

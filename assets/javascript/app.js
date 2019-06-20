@@ -120,11 +120,13 @@ var timeLeft;
 // Here is the function to start the timer
 var startTimer = function() {
     // Here are the variables for the timer
-    timeLeft = 10;
+    timeLeft = 30;
     timerId = setInterval(countdown, 1000);
-    var elem = document.getElementById("timer");
+    // var elem = document.getElementById("timer");
+    // var elem = $("#timer");
     // Here is the function for the timer
-    elem.innerHTML = "Time remaining: " + timeLeft + " seconds";
+    $("#timer").text("Time remaining: " + timeLeft + " seconds");
+    // elem.innerHTML = "Time remaining: " + timeLeft + " seconds";
     function countdown() {
         if (timeLeft == -1) {
             clearTimeout(timerId);
@@ -132,7 +134,8 @@ var startTimer = function() {
             outOfTime();
             unanswered++;
         } else {
-            elem.innerHTML = "Time remaining: " + timeLeft + " seconds";
+            // elem.innerHTML = "Time remaining: " + timeLeft + " seconds";
+            $("#timer").text("Time remaining: " + timeLeft + " seconds");
             timeLeft--;
         };
     } 
@@ -194,25 +197,21 @@ $("#start").click(function(){
     $("#question").show();
     $("#question").text(questionArr[counter].question);
     $(".hidebutton").show();
-    $("#answer1").show();
     $("#answer1").text(questionArr[counter].answersAll[0]);
-    $("#answer2").show();
     $("#answer2").text(questionArr[counter].answersAll[1]);
-    $("#answer3").show();
     $("#answer3").text(questionArr[counter].answersAll[2]);
-    $("#answer4").show();
     $("#answer4").text(questionArr[counter].answersAll[3]);
 });
 
 
-
+// Function to compare the user's guess to the correct answer
 function compareAnswers() {
     $(".answer-choice").on("click", function(event){
         console.log(event);
         console.log("Event: " + event.target.textContent);
         console.log("Event Type: " + typeof(event.target.textContent));
         // Testing to see if we have a correct answer
-        if (event.target.textContent == questionArr[counter].answerCorrect) {
+        if (event.target.textContent === questionArr[counter].answerCorrect) {
             console.log("MATCH");
             congrats();
             wins++;
@@ -229,7 +228,7 @@ compareAnswers();
 
 function newQuestion() {
 
-if (counter < questionArr.length - 10) {
+if (counter < questionArr.length - 1) {
 
     counter++;
     console.log("New question: " + questionArr[counter].question);
@@ -241,7 +240,7 @@ if (counter < questionArr.length - 10) {
     $("#answer3").text(questionArr[counter].answersAll[2]);
     $("#answer4").text(questionArr[counter].answersAll[3]);
     $("#yay").hide();
-    timeLeft = 10;
+    // timeLeft = 10;
     startTimer();
     $("#image-holder").hide();
 }
