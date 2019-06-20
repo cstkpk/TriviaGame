@@ -22,7 +22,29 @@ var questionArr = [
         answersAll: ["Apple", "Cherry", "Blueberry", "Pecan"],
         answerCorrect: "Blueberry"
     }
+
 ]
+
+// Array for winning images
+var winImage = ["assets/images/celebration1.gif", "assets/images/celebration2.gif"];
+winImageCount = 0;
+
+// Array for losing images
+var loseImage = ["assets/images/loss1.gif"];
+loseImageCount = 0;
+
+// This function will display an image if the user wins the round
+function displayWinImage() {
+    $("#image-holder").html("<img src=" + winImage[winImageCount] + " width='400px'>");
+    winImageCount++;
+    console.log("Image: " + winImageCount);
+}
+
+// This function will display an image if the user loses the round
+function displayLoseImage() {
+    $("#image-holder").html("<img src=" + loseImage[loseImageCount] + " width='400px'>");
+    loseImageCount++;
+}
 
 // Variables for stats
 var wins = 0;
@@ -30,16 +52,29 @@ var losses = 0;
 var unanswered = 0;
 
 
+function updateWins() {
+    $("#wins").text("Wins: " + wins);
+}
+
+function updateLosses() {
+    $("#losses").text("Losses: " + losses);
+}
+
+function updateUnanswered() {
+    $("#unanswered").text("Unanswered: " + unanswered);
+}
+
+function showStats() {
+    updateWins();
+    updateLosses();
+    updateUnanswered();
+}
 
 
 var counter = 0;
 console.log("Correct answer: " + questionArr[counter].answerCorrect);
 
 
-
-// var userGuess = $(".answer-choice").on("click", function(event) {
-//     event.target.textContent;
-// })
 
 var timerId;
 var timeLeft;
@@ -55,13 +90,11 @@ var startTimer = function() {
     function countdown() {
         if (timeLeft == -1) {
             clearTimeout(timerId);
-            // doSomething();
             answerPage();
             unanswered++;
         } else {
             elem.innerHTML = "Time remaining: " + timeLeft + " seconds";
             timeLeft--;
-            console.log("Hello time");
         };
     } 
 }
@@ -77,6 +110,7 @@ function answerPage() {
     $("#yay").text("Tough luck!");
     clearTimeout(timerId);
     setTimeout(newQuestion, 3000);
+    displayLoseImage();
 }
 
 // Function to clear the page and say congratulations
@@ -88,6 +122,8 @@ function congrats() {
     $(".hidebutton").hide();
     $("#yay").show();
     $("#yay").text("Congratulations!");
+    $("#image-holder").show();
+    displayWinImage();
 }
 
 
@@ -120,12 +156,15 @@ function compareAnswers() {
         if (event.target.textContent == questionArr[counter].answerCorrect) {
             console.log("MATCH");
             congrats();
+            wins++;
         }
         else if (event.target.textContent !== questionArr[counter].answerCorrect) {
             answerPage();
+            losses++
         }
     })
 }
+
 compareAnswers();
  
 
@@ -145,13 +184,16 @@ if (counter < questionArr.length - 1) {
     $("#yay").hide();
     timeLeft = 10;
     startTimer();
+    $("#image-holder").hide();
 }
 else {
     $("#yay").hide();
     $("#timer").hide();
-}
-}
+    showStats();
+    $("#game-over").text("GAME OVER");
+}};
 
+// Calling functions to start the game
 
 
 
