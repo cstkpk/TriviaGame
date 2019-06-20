@@ -4,25 +4,60 @@ $(document).ready(function() {
     $("#question").hide();
     $(".hidebutton").hide();
     $("#yay").hide();
+    $("#image-holder").html("<img src=assets/images/celebration2.gif width='400px'>")
 
 // Array of questions and answers 
 var questionArr = [
     question1 = {
-        question: "What is the first color in the rainbow?",
-        answersAll: ["Orange", "Yellow", "Green", "Red"],
-        answerCorrect: "Red"
+        question: "Who lived in the pit?",
+        answersAll: ["Ron Swanson", "Andy Dwyer", "Ann Perkins", "Tom Haverford"],
+        answerCorrect: "Andy Dwyer"
     },
     quesiton2 = { 
-        question: "Which is the largest number?",
-        answersAll: ["11", "4", "32", "23"],
-        answerCorrect: "32"
+        question: "In what state is the town of Pawnee located?",
+        answersAll: ["Georgia", "Montana", "Indiana", "Pennsylvania"],
+        answerCorrect: "Indiana"
     },
     question3 = {
-        question: "Which is the best type of pie?",
-        answersAll: ["Apple", "Cherry", "Blueberry", "Pecan"],
-        answerCorrect: "Blueberry"
+        question: "Which of these was not a former band name of Mouse Rat?",
+        answersAll: ["Two Doors Down", "Scarecrow Boat", "Malice in Chains", "Meetwood Flack"],
+        answerCorrect: "Meetwood Flack"
+    },
+    question4 = {
+        question: "Fill in the blank: 'Bye bye _______'",
+        answersAll: ["Lil' Sebastian", "Birdie", "Apple Pie", "Carrots in the Garden"],
+        answerCorrect: "Lil' Sebastian"
+    },
+    question5 = {
+        question: "What surprisingly successful game did Ben Wyatt create?",
+        answersAll: ["Liege of Legions", "Calzone Zone", "The Cones of Dunshire", "Claymation Motion"],
+        answerCorrect: "The Cones of Dunshire"
+    },
+    question6 = {
+        question: "What is Jerry's real name?",
+        answersAll: ["Terry", "Barry", "Garry", "Larry"],
+        answerCorrect: "Garry"
+    },
+    question7 = {
+        question: "What internet company became headquartered in Pawnee?",
+        answersAll: ["Gryzzl", "Tubes", "Wu Tang LAN", "CromCrast"],
+        answerCorrect: "Gryzzl"
+    },
+    question8 = {
+        question: "Who is April's posh alter ego?",
+        answersAll: ["Matilda Mumford", "Janet Snakehole", "Katya Semenov", "Edith Botsworth"],
+        answerCorrect: "Janet Snakehole"
+    },
+    question9 = {
+        question: "Which of these was not one of Tom Haverford's business ideas?",
+        answersAll: ["Disco Dairy——Spread the party", "Saltweens——Saltines for tweens", "Snail Mail——An escargot delivery service", "Socking Stuffers——Socks with pockets"],
+        answerCorrect: "Socking Stuffers——Socks with pockets"
+    },
+    question10 = {
+        question: "Which charity built a playground in Pawnee?",
+        answersAll: ["Bobs the Builders", "KaBOOM!", "Monkeys in a Barrel", "The Playground People"],
+        answerCorrect: "KaBOOM!"
     }
-
 ]
 
 // Array for winning images
@@ -130,6 +165,7 @@ function congrats() {
 // Function to hide start button and show the timer and first question with answers
 $("#start").click(function(){
     $("#start").hide();
+    $("#image-holder").hide();
     $("#timer").show();
     startTimer();
     $("#question").show();
