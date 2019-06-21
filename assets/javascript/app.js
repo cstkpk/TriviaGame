@@ -4,6 +4,7 @@ $(document).ready(function() {
     $("#question").hide();
     $(".hidebutton").hide();
     $("#yay").hide();
+    $(".stats").hide();
     $("#image-holder").html("<img src=assets/images/start3.gif width='400px'>")
 
 // Array of questions and answers 
@@ -103,6 +104,7 @@ function showStats() {
     $("#wins").show();
     $("#losses").show();
     $("#unanswered").show();
+    $(".stats").show();
     updateWins();
     updateLosses();
     updateUnanswered();
@@ -225,7 +227,7 @@ compareAnswers();
 // Function to display the next question
 function newQuestion() {
     // If the counter variable is less than the questions array (minus 1, to account for the 0th index), a new question is displayed and the timer restarts
-    if (counter < questionArr.length - 1) {
+    if (counter < questionArr.length - 10) {
         counter++;
         console.log("New question: " + questionArr[counter].question);
         $("#question").show();
