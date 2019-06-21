@@ -124,8 +124,8 @@ var startTimer = function() {
     // Here are the variables for the timer
     timeLeft = 30;
     timerId = setInterval(countdown, 1000);
+    $("#timer").text("Time remaining: " + timeLeft + " seconds"); 
     // Here is the function for the timer
-    $("#timer").text("Time remaining: " + timeLeft + " seconds");
     function countdown() {
         if (timeLeft == -1) {
             clearTimeout(timerId);
@@ -227,7 +227,7 @@ compareAnswers();
 // Function to display the next question
 function newQuestion() {
     // If the counter variable is less than the questions array (minus 1, to account for the 0th index), a new question is displayed and the timer restarts
-    if (counter < questionArr.length - 10) {
+    if (counter < questionArr.length - 1) {
         counter++;
         console.log("New question: " + questionArr[counter].question);
         $("#question").show();
