@@ -18,6 +18,14 @@ h1 {
     padding-top: 10px;
 }
 
+h1:hover {
+    /* background: -webkit-linear-gradient(rgb(198, 243, 198), rgb(2, 68, 2)); */
+    background: linear-gradient(to right, rgb(198, 243, 198) , rgb(2, 68, 2));
+    /* background: linear-gradient(to right, #30CFD0 0%, #330867 100%); */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .answer-choice:hover {
     color: green;
 }
