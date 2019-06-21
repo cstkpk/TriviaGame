@@ -143,7 +143,7 @@ function answerPage() {
     $("#yay").show();
     $("#yay").text("We can't all be winners.");
     clearTimeout(timerId);
-    setTimeout(newQuestion, 3000);
+    setTimeout(newQuestion, 5000);
     $("#image-holder").show();
     displayLoseImage();
     $("#reveal").show();
