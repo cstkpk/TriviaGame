@@ -122,9 +122,9 @@ var timeLeft;
 // Here is the function to start the timer
 var startTimer = function() {
     // Here are the variables for the timer
-    timeLeft = 30;
+    timeLeft = 29; // See note below
     timerId = setInterval(countdown, 1000);
-    $("#timer").text("Time remaining: " + timeLeft + " seconds"); 
+    $("#timer").text("Time remaining: " + 30 + " seconds"); // This bandages over the 1 second delay issue. How to fix for real though?
     // Here is the function for the timer
     function countdown() {
         if (timeLeft == -1) {
